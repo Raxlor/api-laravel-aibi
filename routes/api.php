@@ -294,7 +294,7 @@ Route::post('login', function (Request $request) {
         'Role' => $user->Role, // Emisor del token
         'iss' => "API", // Emisor del token
         'iat' => time(), // Tiempo en que se emite el token
-        'exp' => time() + 60 * 60 // Expiración del token (1 hora)
+        'exp' => time() + (15 * 24 * 60 * 60) // Expiración del token (15 días)
     ];
 
     // Generar el token JWT

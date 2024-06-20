@@ -6,22 +6,6 @@ use Illuminate\Support\Facades\Validator;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-use OpenApi\Annotations as OA;
-/**
-* @OA\Info(title="API Usuarios", version="1.0")
-*
-* @OA\Server(url="http://swagger.local")
-*/
-/**
- * @OA\Get(
- *     path="/trainer",
- *     tags={"trainer"},
- *     summary="Get all users",
- *     description="Returns a list of all users",
- *     @OA\Response(response=200, description="Successful operation"),
- *     @OA\Response(response=404, description="Users not found")
- * )
- */
 Route::get('/', function () {
     
     return view('welcome');

@@ -1,0 +1,10 @@
+[01-Jul-2023 08:37:50 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/prestasys/public_html/api/vendor/symfony/string/Resources/functions.php on line 34
+[01-Jul-2023 08:38:17 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/prestasys/public_html/api/vendor/symfony/string/Resources/functions.php on line 34
+[01-Jul-2023 09:54:45 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/prestasys/public_html/api/vendor/symfony/string/Resources/functions.php on line 34
+[01-Jul-2023 09:54:59 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/prestasys/public_html/api/vendor/symfony/string/Resources/functions.php on line 34
+[10-Jan-2024 04:19:53 UTC] PHP Warning:  require(/home/alexortizrd/public_html/prestasys/api/vendor/autoload.php): Failed to open stream: No such file or directory in /home/alexortizrd/public_html/prestasys/api/artisan on line 18
+[10-Jan-2024 04:19:53 UTC] PHP Warning:  require(/home/alexortizrd/public_html/prestasys/api/vendor/autoload.php): Failed to open stream: No such file or directory in /home/alexortizrd/public_html/prestasys/api/artisan on line 18
+[10-Jan-2024 04:19:53 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/alexortizrd/public_html/prestasys/api/vendor/autoload.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/alexortizrd/public_html/prestasys/api/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /home/alexortizrd/public_html/prestasys/api/artisan on line 18

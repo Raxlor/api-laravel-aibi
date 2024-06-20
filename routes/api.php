@@ -7,10 +7,10 @@ use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
 Route::get('/', function () {
-    
+
     return view('welcome');
 });
-   
+
 
 /// trainers start get
 route::get('trainer', function (Request $request) {
@@ -266,3 +266,40 @@ Route::delete('stadiums/{id}', function ($id) {
         return response()->json(['message' => 'Estadio no encontrado'], 404);
     }
 })->middleware('protected');
+
+
+Route::post('login', function (Request $request) {
+    // Validar los datos del formulario
+    $validator = Validator::make($request->all(), [
+        'Email' => 'required|email|max:255',
+        'Password' => 'required|string|max:255',
+    ]);
+
+    // Verificar si la validación falla
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()], 422); // Código de estado 422 para errores de validación
+    }
+
+    // Buscar el usuario en la base de datos usando DB::
+    $user = DB::table('users')->where('Email', $request->Email)->first();
+
+    // Verificar si el usuario existe y la contraseña es correcta
+    if (!$user || !Hash::check($request->Password, $user->Password)) {
+        return response()->json(['message' => 'Credenciales inválidas'], 401); // Código de estado 401 (Unauthorized)
+    }
+
+    // Crear el payload para el token JWT
+    $payload = [
+        'Id' => $user->Id, // Emisor del token
+        'Role' => $user->Role, // Emisor del token
+        'iss' => "API", // Emisor del token
+        'iat' => time(), // Tiempo en que se emite el token
+        'exp' => time() + 60 * 60 // Expiración del token (1 hora)
+    ];
+
+    // Generar el token JWT
+    $jwt = JWT::encode($payload, getenv('JWT_SECRET'), 'HS256');
+
+    
+    return response()->json(['token' => $jwt], 200); // Código de estado 200 (OK)
+});
